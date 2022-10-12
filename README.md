@@ -2,26 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
 
-## Development server
+## Generate Workspace w/ Module Federation Micro Frontend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- `npm init @angular@latest -- --create-application false` 
+- `cd cli-workspace`
+- `ng g app mfe-checkin`
+- `npm i @angular-architects/module-federation -D`
+- `npx ng g @angular-architects/module-federation:init --project mfe-checkin --port 4202 --type remote`
+- `ng g m checkin`
+- `ng g c checkin/ticket`
 
-## Code scaffolding
+## Configure Micro Frontend and Module Federation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Add routing for `CheckinModule`
+- Add routing for `AppModule` and `<router-outlet>`
+- Change Webpack Config
+  - Modify `name`
+  - Expose `CheckinModule`
